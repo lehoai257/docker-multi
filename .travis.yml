@@ -22,3 +22,15 @@ after_success:
   - docker push lehoai257/multi-nginx
   - docker push lehoai257/multi-server
   - docker push lehoai257/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "Docker-multi"
+  env: "Dockermulti-env"
+  bucket_name: "elasticbeanstalk-us-east-1-981300088040"
+  bucket_path: "docker-multi"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
